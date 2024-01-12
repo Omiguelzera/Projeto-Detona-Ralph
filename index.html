@@ -13,8 +13,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!-- styles -->
-    <link rel="stylesheet" href="./src/styles/reset.css">
-    <link rel="stylesheet" href="./src/styles/main.css">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: url(./src/image/wall.png);
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .option-box {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            background-color: #777;
+        }
+
+        /* Media queries */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .option-box {
+                padding: 15px;
+            }
+
+            button {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
 
 </head>
 
@@ -22,43 +118,43 @@
 
     <div class="container">
 
-        <div class="menu">
-            <div class="menu-time">
-                <h2 style="color: red;">Time left</h2>
-                <h2 id="time-left">0</h2>
+        <h1>Detona Ralh</h1>
+
+        <div class="options-container">
+            <div class="option-box">
+                <h2>Play</h2>
+                <button onclick="startGame()">Start</button>
             </div>
-            <div class="menu-score">
-                <h2 style="color: red;">Your score</h2>
-                <h2 id="score">0</h2>
-            </div>
-            <div class="menu-lives">
-                <img src="./src/image/player.png" >
-                <h2 id="lives">:x3</h2>
+
+            <div class="option-box">
+                <h2>Tutorial</h2>
+                <button onclick="openTutorial()">Learn</button>
             </div>
         </div>
 
-        
-        <div class="panel">
-            <div class="panel-row">
-                <div class="square enemy" id="1"></div>
-                <div class="square" id="2"></div>
-                <div class="square" id="3"></div>
-            </div>
-
-            <div class="panel-row">
-                <div class="square" id="4"></div>
-                <div class="square" id="5"></div>
-                <div class="square" id="6"></div>
-            </div>
-
-            <div class="panel-row">
-                <div class="square" id="7"></div>
-                <div class="square" id="8"></div>
-                <div class="square" id="9"></div>
+        <!-- Modal for Tutorial -->
+        <div id="tutorialModal" class="modal">
+            <div class="modal-content">
+                <p>Bem-vindo ao tutorial do jogo! Ganhe pontos clicando nos inimigos e desafie-se a não ultrapassar 3 erros. Boa sorte!</p>
+                <button class="close-btn" onclick="closeTutorial()">Fechar</button>
             </div>
         </div>
+
     </div>
 
-    <script  defer src="./src/scripts/engine.js"> </script>
+    <script>
+        function startGame() {
+            window.location.href = 'jogo.html'; // Substitua 'index.html' pelo seu arquivo principal.
+        }
+
+        function openTutorial() {
+            document.getElementById('tutorialModal').style.display = 'flex';
+        }
+
+        function closeTutorial() {
+            document.getElementById('tutorialModal').style.display = 'none';
+        }
+    </script>
+
 </body>
 </html>
