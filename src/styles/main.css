@@ -29,8 +29,8 @@
 .square{
     height: 150px;
     width: 150px;
-    border : 1px solid black;
-    background-color: #2bfab5;
+    border : 1px solid hsl(0, 100%, 99%);
+    background-color: #000000;
 }
 
 .enemy{
